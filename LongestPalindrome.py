@@ -48,3 +48,38 @@ class Solution:
             res = "".join(list(q[0]))
 
         return res
+
+    def longestPalindrome(self, s: str) -> str:
+
+        max_len = 0
+        res = [0, 1]
+
+        for i in range(len(s)):
+
+            # diff = 0 for odd length palindromes
+            # diff = 1 for even length palindromes
+            for diff in [0, 1]:
+
+                left = i
+                right = i + diff
+                print("s[i],", s[i])
+                print(left)
+                print(right)
+                print(diff)
+
+                while left >= 0 and right < len(s):
+                    print(s[left])
+                    print(s[right])
+                    if s[left] == s[right]:  # a-ba
+                        left -= 1
+                        right += 1
+                    else:
+                        break
+
+                cur_len = right - left - 1
+                print(cur_len)
+                if cur_len > max_len:
+                    max_len = cur_len
+                    res = [left + 1, right]  # store the pointer
+
+        return s[res[0]: res[1]]
