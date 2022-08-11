@@ -17,6 +17,8 @@ class Solution:
 
     def dfs(self, isConnected, seen, node):
         size = len(isConnected)
+        print('len(isConnected)', size)
+        print('node', node)
 
         for neighbor in range(size):
             print('neighbor ', neighbor)
